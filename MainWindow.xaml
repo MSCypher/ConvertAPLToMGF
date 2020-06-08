@@ -1,0 +1,32 @@
+﻿<Window x:Name="APLMGFConverter" x:Class="ConvertAPLToMGF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="APL To MGF Conversion" Height="494.429" Width="702.5">
+    <Grid Margin="0,0,1,0">
+        <ListBox x:Name="fileNames" HorizontalAlignment="Left" Height="196" Margin="28,34,0,0" VerticalAlignment="Top" Width="552" AllowDrop="True" Drop="DragDrop" SelectionMode="Extended" SelectionChanged="AplSelectChanged"/>
+        <Button x:Name="quit" Content="Quit" HorizontalAlignment="Left" Margin="599,16,0,0" VerticalAlignment="Top" Width="75" Click="QuitClick" ToolTip="Close application"/>
+        <Button x:Name="process" Content="Process" HorizontalAlignment="Left" Margin="599,63,0,0" VerticalAlignment="Top" Width="75" Click="OnProcess" IsEnabled="False" ToolTip="Start conversion"/>
+        <ProgressBar x:Name="fileProgress" HorizontalAlignment="Left" Height="20" Margin="74,426,0,0" VerticalAlignment="Top" Width="506" Foreground="Lime"/>
+        <Button x:Name="cancel" Content="Cancel" HorizontalAlignment="Left" Margin="599,94,0,0" VerticalAlignment="Top" Width="75" ToolTip="Cancel current conversion" Click="OnCancel" IsEnabled="False"/>
+        <TextBlock x:Name="textUpdate" HorizontalAlignment="Left" Margin="181,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295"/>
+        <ComboBox x:Name="fragSelector" HorizontalAlignment="Left" Margin="152,325,0,0" VerticalAlignment="Top" Width="149" ToolTip="Select Mascot equivalent fragmentation type" IsReadOnly="True" SelectedIndex="0">
+            <ComboBoxItem Content="Q-Exactive_Internal"/>
+            <ComboBoxItem Content="Q-Exactive_Gen"/>
+            <ComboBoxItem Content="Q-Exactive_Internal_3"/>
+            <ComboBoxItem Content="ESI-QUAD-TOF"/>
+            <ComboBoxItem Content="ESI_HCD"/>
+            <ComboBoxItem Content="ESI-TRAP"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="34,329,0,0" TextWrapping="Wrap" Text="Fragmentation type:" VerticalAlignment="Top" Width="109"/>
+        <TextBlock HorizontalAlignment="Left" Margin="44,268,0,0" TextWrapping="Wrap" Text="MQ Combined/txt folder location for corresponding apl files:" VerticalAlignment="Top" Width="181" Height="36"/>
+        <Button x:Name="browseButton" Content="Select" HorizontalAlignment="Left" Margin="230,270,0,0" VerticalAlignment="Top" Width="61" ToolTip="Select folder location for allPeptides and msmsScans text files" Click="OnBrowse"/>
+        <TextBox x:Name="allPeptidesLocation" HorizontalAlignment="Left" Height="39" Margin="300,269,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="280" ToolTip="Location of text files" IsReadOnly="True" AllowDrop="False" HorizontalScrollBarVisibility="Auto"/>
+        <CheckBox x:Name="cloneOrigPeaklist" Content="Use original peaklist for secondary peptides" HorizontalAlignment="Left" Margin="332,326,0,0" VerticalAlignment="Top" Width="255" IsChecked="True" ToolTip="If checked the original MSMS peaklist will be used for secondary peptide features. Recommended if the search algorithm is not negatively impacted by chimeric spectra" Checked="CheckedCloneOriginalPeaklist" Unchecked="UncheckedCloneOriginalPeaklist"/>
+        <CheckBox x:Name="origFileStructure" Content="Write to original MS acquired file name" HorizontalAlignment="Left" Margin="332,349,0,0" VerticalAlignment="Top" Width="239" ToolTip="If checked the MSMS spectra will be written to the original acquired file name structure" IsChecked="True" Checked="CheckedOrigFileStructure" Unchecked="UncheckedOrigFileStructure"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,13,0,0" TextWrapping="Wrap" Text="Drag and drop apl files into the area below or click on Add..." VerticalAlignment="Top" Width="516"/>
+        <Button x:Name="addButton" Content="Add Files..." HorizontalAlignment="Left" Margin="491,235,0,0" VerticalAlignment="Top" Width="89" ToolTip="Click to add apl files to listbox" Click="AddAPLFiles"/>
+        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="30,235,0,0" VerticalAlignment="Top" Width="75" ToolTip="Click to delete selected items in listbox" Click="DeleteAPLFiles" IsEnabled="False"/>
+        <CheckBox x:Name="timsDDA" Content="Bruker TIMS-DDA" HorizontalAlignment="Left" Margin="332,372,0,0" VerticalAlignment="Top" IsChecked="False" ToolTip="Bruker TIMS-DDA acquired data" Checked="CheckedTimsDDA" Unchecked="UncheckedTimsDDA"/>
+
+    </Grid>
+</Window>
