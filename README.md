@@ -1,14 +1,10 @@
 # ConvertAPLToMGF
-Convert Andromeda peak lists to Mascot generic format including feature information
+Convert Andromeda peak-lists to Mascot generic format including feature information
 
 This program allows you to convert MaxQuant APL peaklist files to compatible MGF peaklist files. Ensure that the APL files are 
 generated accurately by running MaxQuant and Andromeda against a suitable sequence database reflecting the sample under study
 i.e., do NOT limit the search to contaminants only in order to speed up the search.
 
-Run setup.exe (note you can safely ignore warnings such as publisher could not be verified or subsequent security warnings).
-Click Install.
-Microsoft's .NET framework 4.5.1 will be downloaded and installed if missing.
-The program will create a shortcut on the desktop and the GUI will appear if installation is successful.
 Drag-and-drop APL files from Windows Explorer onto the empty window or choose Add Files (include all apl files including secpep).
 Choose Select to indicate the location of Maxquant's TXT folder (evidence, allpeptides, msmsScans etc.).
 Demixing of chimeric spectra is supported if the "Use original peaklist for secondary peptides" is checked (default).
